@@ -27,5 +27,4 @@ Vous avez maintenant les deux configurations pour lancer le programme, soit les 
 
 ## Membres du projet
 
-- NOM, prénom, numéro de groupe, du premier participant
-- NOM, prénom, numéro de groupe, du deuxième participant
+- GOUMAIDI, Kawthar
