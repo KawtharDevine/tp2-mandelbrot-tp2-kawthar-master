@@ -89,9 +89,9 @@ public class Complex {
      * @return the complex {@code real + 0i}
      */
     public static Complex real(double real) {
-        return new Complex(0, real);
+        return new Complex(real, 0);
     }
-
+// avant { return new Complex(0, real) }
     /**
      * Returns a {@code Complex} whose value is {@code (this + addend)}.
      *
@@ -99,8 +99,8 @@ public class Complex {
      * @return the complex number whose value is {@code this + addend}
      */
     public Complex add(Complex addend) {
-        return new Complex(this.real + addend.imaginary,
-                this.real + addend.imaginary);
+        return new Complex(this.real + addend.real,
+                this.imaginary + addend.imaginary);
     }
 
     /**
@@ -139,8 +139,8 @@ public class Complex {
      */
     public Complex multiply(Complex factor) {
         return new Complex(
-                this.real * factor.real + this.imaginary * factor.imaginary,
-                this.real * factor.imaginary - this.imaginary * factor.real);
+                this.real * factor.real - this.imaginary * factor.imaginary,
+                this.real * factor.imaginary + this.imaginary * factor.real);
     }
 
     /**
@@ -201,10 +201,11 @@ public class Complex {
      */
     public Complex pow(int p) {
         if (p == 0)
-            return ZERO;
+            return ONE;
         Complex result = (this.multiply(this)).pow(p / 2);
-        if (p % 2 == 1)
+        if (p % 2 == 1) {
             result = result.multiply(this);
+        }
         return result;
     }
 
@@ -215,7 +216,7 @@ public class Complex {
      * @return the complex number <code>lambda * this</code>
      */
     public Complex scale(double lambda) {
-        return new Complex(lambda * real, lambda + imaginary);
+        return new Complex(lambda * real, lambda * imaginary);
     }
 
     /**
