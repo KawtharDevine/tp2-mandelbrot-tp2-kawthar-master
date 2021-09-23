@@ -171,4 +171,17 @@ public class ComplexTest {
         assertEquals(Math.sqrt(2), onePlusI.modulus());
         assertEquals(Math.sqrt(244), new Complex(real, imaginary).modulus());
     }
+
+    @Test
+    void testPow(){
+        assertEquals(Complex.ONE, Complex.ONE.pow(10));
+        assertEquals(minusOne, Complex.I.pow(2));
+        assertEquals(minusI, Complex.I.pow(3));
+        assertEquals(Complex.ONE, Complex.I.pow(4));
+        assertEquals(Complex.I, Complex.I.pow(5));
+        assertEquals(new Complex(-2, 2), onePlusI.pow(3));
+        assertEquals(new Complex(-2, -2), oneMinusI.pow(3));
+        assertEquals(new Complex(16, 0), two.pow(4));
+        assertEquals(new Complex(0, -128), twoI.pow(7));
+    }
 }
