@@ -136,6 +136,39 @@ public class ComplexTest {
         assertEquals(new Complex(real, 0), Complex.real(real));
     }
 
+    @Test
+    void testAdd(){
+        assertEquals(Complex.ONE, Complex.ZERO.add(Complex.ONE));
+        assertEquals(onePlusI, Complex.ONE.add(Complex.I));
+        assertEquals(new Complex(real+1, imaginary+1), new Complex(real, imaginary).add(onePlusI));
+    }
 
+    @Test
+    void testMultiply(){
+        assertEquals(Complex.I, Complex.I.multiply(Complex.ONE));
+        assertEquals(minusOne, Complex.I.multiply(Complex.I));
+        assertEquals(minusOne, Complex.ONE.multiply(minusOne));
+        assertEquals(Complex.ONE, Complex.I.multiply(minusI));
+        assertEquals(Complex.ONE, Complex.ONE.multiply(Complex.ONE));
+        assertEquals(minusI, minusOne.multiply(Complex.I));
+        assertEquals(minusI, minusI.multiply(Complex.ONE));
+        assertEquals(onePlusI, Complex.I.multiply(oneMinusI));
+        assertEquals(oneMinusI, Complex.ONE.multiply(oneMinusI));
+        assertEquals(twoI, onePlusI.multiply(onePlusI));
+        assertEquals(two, onePlusI.multiply(oneMinusI));
+    }
 
+    @Test
+    void testSquaredModulus(){
+        assertEquals(1, Complex.ONE.squaredModulus());
+        assertEquals(2, onePlusI.squaredModulus());
+        assertEquals(244, new Complex(real, imaginary).squaredModulus());
+    }
+
+    @Test
+    void testModulus(){
+        assertEquals(1, Complex.ONE.modulus());
+        assertEquals(Math.sqrt(2), onePlusI.modulus());
+        assertEquals(Math.sqrt(244), new Complex(real, imaginary).modulus());
+    }
 }
